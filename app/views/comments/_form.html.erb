@@ -1,0 +1,25 @@
+<%= form_with model: [@article, @article.comments.build] do |form| %>
+<div class="grid grid-cols-2 gap-2" >
+<p>
+<%= form.label :commenter %><br>
+</p>
+ <p>
+<%= form.text_field :commenter, size: "30" %>
+</p>
+<p>
+<%= form.label :body %>
+</p>
+ <p>
+  <%= form.text_area :body, cols: "30", rows: "10" %>
+</p>
+<p>
+<%= form.label :status %><br>
+</p>
+<p>
+  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+</p>
+<p class="my-4">
+  <%= form.submit class: "bg-orange-500 text-white p-3 rounded border-none" %>
+</p>
+</div>
+<% end %>

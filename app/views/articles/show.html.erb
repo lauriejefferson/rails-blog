@@ -1,27 +1,28 @@
-<h1><%= @article.title %></h1>
+<h1 class="mb-4"><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
+<div class="mb-4 p-5">
+  <%= markdown @article.body %> 
+</div>
 
-<ul>
-    <li>
-      <%= link_to "Edit", edit_article_path(@article) %>
+<ul class="flex justify-end">
+    <li class="ml-2">
+      <%= link_to "Edit", edit_article_path(@article), class: "bg-teal-500 text-white p-3 rounded border-none" %>
     </li>
-    <li>
-      <%= link_to "Destroy", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <li class="ml-2">
+      <%= link_to "Destroy", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bg-red-500 text-white p-3 rounded border-none" %>
     </li>
 </ul>
 
+
+<div class="my-5">
+<h2>Comments</h2>
+<%= render @article.comments %>
+</div>
+
 <h2>Add a comment:</h2>
-<%= form_with model: [@article, @article.comments.build] do |form|%>
- <p>
-  <%= form.label :commenter%><br>
-  <%= form.text_field :commenter %>
- </p>
- <p>
-  <%= form.label :body %>
-  <%= form.text_area :body %>
-</p>
-<p>
-  <%= form.submit %>
-</p>
-<% end %>
+<div class="my-5">
+
+<%= render "comments/form" %>
+</div>
+
+<%= link_to "Back", root_path, class: "bg-slate-500 text-white p-3 rounded border-none" %>

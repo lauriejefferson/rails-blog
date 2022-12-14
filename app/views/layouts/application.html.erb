@@ -12,8 +12,14 @@
   </head>
 
   <body>
-   <%= render "nav" %>
+   <%
+=begin%>
+ <%= render "nav" %> 
+<%
+=end%>
     <main class="container mx-auto">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
   </body>

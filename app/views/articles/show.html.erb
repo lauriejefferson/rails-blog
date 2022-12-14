@@ -16,12 +16,20 @@
 
 <div class="my-5">
 <h2>Comments</h2>
-<%= render @article.comments %>
+<ul>
+<% @article.comments.each do |comment| %>
+  <li class="py-5">
+    <h4 class="py-2"><%= comment.commenter %></h4>
+    <p><%= comment.body %></p>
+    <hr>
+  </li>
+<% end %>
+</ul>
 </div>
 
-<h2>Add a comment:</h2>
-<div class="my-5">
 
+<h2 class="mb-5">Add a comment:</h2>
+<div class="my-5">
 <%= render "comments/form" %>
 </div>
 

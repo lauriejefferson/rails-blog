@@ -31,6 +31,7 @@ gem "dotenv-rails", groups: [:development, :test]
 
 gem "redcarpet"
 
+gem "devise", github: "heartcombo/devise", branch: "main"
 # gem 'pg', '~> 1.4', '>= 1.4.5'
 
 # Use Redis adapter to run Action Cable in production

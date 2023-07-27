@@ -4,22 +4,22 @@
 <%= form.label :commenter %><br>
 </p>
  <p class="col-start-2 col-end-4 col-span-2">
-<%= form.text_field :commenter, size: "30" %>
+<%= form.text_field :commenter, size: "30", class: "border-none" %>
 </p>
 <p class="col-start-1">
 <%= form.label :body %>
 </p>
  <p class="col-start-2 col-end-4 col-span-2" >
-  <%= form.text_area :body, cols: "60", rows: "10" %>
+  <%= form.text_area :body, cols: "80", rows: "10", class: "border-none" %>
 </p>
 <p class="col-start-1">
 <%= form.label :status %><br>
 </p>
 <p>
-  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class: "rounded"  %>
 </p>
 </div>
 <p class="my-5">
-  <%= form.submit class: "bg-orange-500 text-white p-3 rounded border-none" %>
+  <%= form.submit class: "bg-blue-800 text-white p-3 rounded border-none" %>
 </p>
 <% end %>

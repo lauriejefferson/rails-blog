@@ -1,6 +1,6 @@
 <h1 class="mb-4"><%= @article.title %></h1>
 
-<div class="mb-4 p-5">
+<div class="mb-4 p-5 h-80 bg-white">
   <%= markdown @article.body %> 
 </div>
 
@@ -18,10 +18,18 @@
 <h2>Comments</h2>
 <ul>
 <% @article.comments.each do |comment| %>
-  <li class="py-5">
+  <li class="pt-5 bg-white mb-4">
     <h4 class="py-2"><%= comment.commenter %></h4>
-    <p><%= comment.body %></p>
-    <hr>
+    <p class="py-5"><%= comment.body %></p>
+    <p class="flex justify-end">
+    <%= link_to "Destroy Comment", [comment.article, comment], 
+      data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      },
+      class: "bg-red-500 text-white rounded p-3 border-none"
+    %>
+  </p>
   </li>
 <% end %>
 </ul>
@@ -32,5 +40,7 @@
 <div class="my-5">
 <%= render "comments/form" %>
 </div>
+<%= link_to "Back", root_path, class: " bg-neutral-700 text-white p-3 rounded border-none" %>
 
-<%= link_to "Back", root_path, class: "bg-slate-500 text-white p-3 rounded border-none" %>
+
+

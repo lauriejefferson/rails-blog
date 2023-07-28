@@ -1,46 +1,41 @@
-<h1 class="mb-4"><%= @article.title %></h1>
+<%= turbo_frame_tag @article do %>
+  <h1 class="mb-4"><%= @article.title %></h1>
+  <div class="my-3 py-5 bg-white">
+    <%= markdown @article.body %>
+  </div>
+<% end %>
 
-<div class="mb-4 p-5 h-80 bg-white">
-  <%= markdown @article.body %> 
-</div>
-
-<ul class="flex justify-end">
+  <ul class="flex justify-end">
     <li class="ml-2">
       <%= link_to "Edit", edit_article_path(@article), class: "bg-teal-500 text-white p-3 rounded border-none" %>
     </li>
     <li class="ml-2">
       <%= link_to "Destroy", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "bg-red-500 text-white p-3 rounded border-none" %>
     </li>
-</ul>
-
+  </ul>
 
 <div class="my-5">
-<h2>Comments</h2>
-<ul>
-<% @article.comments.each do |comment| %>
-  <li class="pt-5 bg-white mb-4">
-    <h4 class="py-2"><%= comment.commenter %></h4>
-    <p class="py-5"><%= comment.body %></p>
-    <p class="flex justify-end">
-    <%= link_to "Destroy Comment", [comment.article, comment], 
+  <h2>Comments</h2>
+  <ul>
+    <% @article.comments.each do |comment| %>
+      <li class="pt-5 bg-white mb-4">
+        <h4 class="py-2"><%= comment.commenter %></h4>
+        <p class="py-5"><%= comment.body %></p>
+        <p class="flex justify-end">
+          <%= link_to "Destroy Comment", [comment.article, comment], 
       data: {
         turbo_method: :delete,
         turbo_confirm: "Are you sure?"
       },
       class: "bg-red-500 text-white rounded p-3 border-none"
     %>
-  </p>
-  </li>
-<% end %>
-</ul>
+        </p>
+      </li>
+    <% end %>
+  </ul>
 </div>
-
-
 <h2 class="mb-5">Add a comment:</h2>
 <div class="my-5">
-<%= render "comments/form" %>
+  <%= render "comments/form" %>
 </div>
 <%= link_to "Back", root_path, class: " bg-neutral-700 text-white p-3 rounded border-none" %>
-
-
-
